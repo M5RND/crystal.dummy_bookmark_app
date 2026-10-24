@@ -4,11 +4,12 @@ require "sqlite3"
 # Class that represents a bookmark.
 # `id` will be 0 if it's not saved in the database.
 # `url` is not nillable
+
 class Bookmark
-  DB.mapping({
-    id:  Int64,
-    url: String,
-  })
+  include DB::Serializable
+
+  property id  : Int64
+  property url : String
 
   def initialize(@url)
     @id = 0
